@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+     <data>
+        <!--  Vamos a grabar datos  -->
+        <record id="template__modelo_tree" model="ir.ui.view">
+            <field name="name">template.modelo.tree</field>
+            <field name="model">template.modelo</field>
+                <field name="arch" type="xml"> 
+                   <tree string ="Listado de...">
+                      <field name="empresa" />
+                      <field name="direccion" />
+                      <field name="web" />
+                   </tree>          
+                </field>
+        </record>
+
+
+       <!--  Vamos a grabar datos  -->
+        <record id="template_modelo_form" model="ir.ui.view">
+            <field name="name">template.modelo.form</field>
+            <field name="model">template.modelo</field>
+                <field name="arch" type="xml"> 
+                   <form string ="Formulario de ..." version="9.0">
+                    <!--  Cuerpo  -->
+                    <sheet>
+                    <group> 
+                         <field name="empresa" />
+                         <field name="direccion" />
+                         <field name="web" />
+                                                
+                    </group>                 
+                    </sheet>
+                     </form>        
+                </field>
+        </record>
+
+        <!--  Definimos los eventos -->
+        <record id="template_modelo_action" model="ir.actions.act_window">
+            <field name="name">Tablero</field>
+            <field name="res_model">template.modelo</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--  Definimos el menu-->
+        <menuitem id="template_modelo_menu" name="Compañia" />
+        <menuitem id="template_modelo_submenu" name="Tablero" parent="template_modelo_menu" sequence="0" />
+
+        <!--  Enlazamos la acción al submenú-->
+        <menuitem id="template_modelo_menu_action" name="Compañia" parent="template_modelo_submenu" sequence="0" action="template_modelo_action"/>
+
+
+     </data>
+</openerp>
